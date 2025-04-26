@@ -23,6 +23,8 @@ urlpatterns = [
     path('',views.indexpage),
     path("databytages/<str:tag>",views.databytages),
     path("mealtype/<str:meal>",views.mealtype),
-    path("search",views.search)
+    path("search",views.search),
+    path("single/<int:id>", views.singlerecipe, name='singlerecipe')
+
 
 ]

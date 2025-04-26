@@ -63,3 +63,27 @@ def search(request):
 
     return render(request,"index.html",context)
 
+import requests
+from django.shortcuts import render
+
+def singlerecipe(request, id):
+    # Get the current recipe
+    current_recipe = requests.get(f"https://dummyjson.com/recipes/{id}").json()
+
+    # Get all recipes
+    all_recipes = requests.get("https://dummyjson.com/recipes").json()["recipes"]
+
+    # Filter recommended recipes by cuisine, excluding the current one
+    recommended = [
+        recipe for recipe in all_recipes
+        if recipe["cuisine"].lower() == current_recipe["cuisine"].lower() and recipe["id"] != current_recipe["id"]
+    ][:3]  # Limit to 3 recommended recipes
+
+    context = {
+        "data": current_recipe,
+        "recommended": recommended
+    }
+
+    return render(request, "receipes.html", context)
+
+
