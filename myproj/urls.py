@@ -21,6 +21,7 @@ from myapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.indexpage),
+
     path("databytages/<str:tag>",views.databytages),
     path("mealtype/<str:meal>",views.mealtype),
     path("search",views.search),

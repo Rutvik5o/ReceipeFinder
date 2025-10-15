@@ -111,7 +111,7 @@
             <a class="navbar-brand fw-bold text-primary" href="index.html">
                 <i class="fas fa-utensils me-2"></i>RecipeFinder
             </a>
-            <a href="index.html" class="btn btn-outline-primary">
+            <a href="/" class="btn btn-outline-primary">
                 <i class="fas fa-arrow-left me-1"></i> Back to Recipes
             </a>
         </div>
@@ -192,12 +192,10 @@
                                     <i class="fas fa-shopping-basket text-primary me-2"></i>Ingredients
                                 </h3>
                                 <ul class="ingredient-list">
-                                    <li><i class="fas fa-circle small me-2 text-muted" style="font-size: 6px;"></i>Pizza dough</li>
-                                    <li><i class="fas fa-circle small me-2 text-muted" style="font-size: 6px;"></i>Tomato sauce</li>
-                                    <li><i class="fas fa-circle small me-2 text-muted" style="font-size: 6px;"></i>Fresh mozzarella cheese</li>
-                                    <li><i class="fas fa-circle small me-2 text-muted" style="font-size: 6px;"></i>Fresh basil leaves</li>
-                                    <li><i class="fas fa-circle small me-2 text-muted" style="font-size: 6px;"></i>Olive oil</li>
-                                    <li><i class="fas fa-circle small me-2 text-muted" style="font-size: 6px;"></i>Salt and pepper to taste</li>
+                                     {% for j in data.ingredients %}
+                                    <li><i class="fas fa-circle small me-2 text-muted" style="font-size: 6px;"></i>{{ j }}</li>
+                                    {% endfor %}
+
                                 </ul>
                             </div>
                         </div>
@@ -211,13 +209,19 @@
                             <i class="fas fa-list-ol text-primary me-2"></i>Instructions
                         </h3>
                         <div class="instructions">
-                            {% for k in data.instructions %}
+                             {% for k in data.instructions %}
+
                             <div class="instruction-step">
+
 
                                 <div class="step-number">{{ forloop.counter }}</div>
                                 <div> {{ k }} </div>
+
+                                <br>
+
                             </div>
-                            {% endfor %}
+                               {% endfor %}
+
                         </div>
                     </div>
                 </div>
